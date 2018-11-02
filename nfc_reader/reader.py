@@ -1,6 +1,9 @@
-import requests
-import nxppy
 import time
+
+try:
+    import nxppy
+except ModuleNotFoundError:
+    import mock_nxppy as nxppy
 
 
 class NfcReader:
@@ -10,16 +13,8 @@ class NfcReader:
     def read_nfc_sync(self):
         while True:
             try:
-                uid = self.mifare.select()
-                print(uid)
-                return uid
+                return self.mifare.select()
             except nxppy.SelectError:
                 # SelectError is raised if no card is in the field.
                 pass
             time.sleep(1)
-
-
-if __name__ == "__main__":
-    reader = NfcReader()
-    while True:
-        uid = reader.read_nfc_sync()
