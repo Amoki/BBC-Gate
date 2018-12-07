@@ -9,4 +9,4 @@ BBG_GATE
 
 # Run
 * `pipenv shell`
-* `python nfc_reader.py & python manage.py runserver`
+* `python nfc_reader/worker.py & python manage.py runserver`

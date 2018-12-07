@@ -14,9 +14,11 @@ GPIO.output(12, GPIO.LOW)  # Set default as low
 
 class OpenDoor(Thread):
     def run(self):
+        print("OPENING DOOR")
         GPIO.output(12, GPIO.HIGH)
         time.sleep(10)
         GPIO.output(12, GPIO.LOW)
+        print("CLOSING DOOR")
 
 
 def open():
