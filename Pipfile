@@ -8,6 +8,7 @@ django = "*"
 docutils = "*"
 "rpi.gpio" = "*"
 requests = "*"
+nxppy = "*"
 
 [dev-packages]
 

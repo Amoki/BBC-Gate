@@ -49,7 +49,7 @@ def rfid(request):
         return HttpResponse('Missing key "rfid_id"', status=400)
     try:
         Rfid.objects.get(rfid_id=rfid_id)
-    except Code.DoesNotExist:
+    except Rfid.DoesNotExist:
         return HttpResponse("Unauthorized", status=401)
     door.open()
     return HttpResponse("OK", status=200)

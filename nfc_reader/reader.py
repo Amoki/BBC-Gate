@@ -16,5 +16,4 @@ class NfcReader:
                 return self.mifare.select()
             except nxppy.SelectError:
                 # SelectError is raised if no card is in the field.
-                pass
-            time.sleep(1)
+                time.sleep(0.5)

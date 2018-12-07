@@ -1,4 +1,3 @@
-import requests
 import nxppy
 import time
 
