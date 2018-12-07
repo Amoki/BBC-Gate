@@ -11,3 +11,7 @@ BBG_GATE
 # Run
 * `pipenv shell`
 * `python nfc_reader/worker.py & python manage.py runserver`
+
+# Add allowed rfid
+* `./manage.py importbadges`
+CTRL-C to exit

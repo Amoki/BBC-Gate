@@ -3,12 +3,17 @@ import time
 try:
     import nxppy
 except ModuleNotFoundError:
-    import mock_nxppy as nxppy
+    from . import mock_nxppy as nxppy
 
 
 class NfcReader:
     def __init__(self):
-        self.mifare = nxppy.Mifare()
+        try:
+            self.mifare = nxppy.Mifare()
+        except SystemError:
+            from . import mock_nxppy
+
+            self.mifare = mock_nxppy.Mifare()
 
     def read_nfc_sync(self):
         while True:
