@@ -16,7 +16,7 @@ class OpenDoor(Thread):
     def run(self):
         print("OPENING DOOR")
         GPIO.output(12, GPIO.HIGH)
-        time.sleep(10)
+        time.sleep(2)
         GPIO.output(12, GPIO.LOW)
         print("CLOSING DOOR")
 
