@@ -9,15 +9,15 @@ except RuntimeError:
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(12, GPIO.OUT)
-GPIO.output(12, GPIO.LOW)  # Set default as low
+GPIO.output(12, GPIO.HIGH)  # Set default as low
 
 
 class OpenDoor(Thread):
     def run(self):
         print("OPENING DOOR")
-        GPIO.output(12, GPIO.HIGH)
-        time.sleep(2)
         GPIO.output(12, GPIO.LOW)
+        time.sleep(2)
+        GPIO.output(12, GPIO.HIGH)
         print("CLOSING DOOR")
 
 

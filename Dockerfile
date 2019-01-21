@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM arm32v7/python:3.7-stretch
 ENV PYTHONUNBUFFERED 1
 ENV API_URL=http://localhost
 
@@ -14,4 +14,3 @@ ADD Pipfile /opt
 ADD Pipfile.lock /opt
 RUN pipenv install --deploy --system
 COPY ./ /opt
-CMD ["sh", "/opt/entrypoint.sh"]
