@@ -11,7 +11,7 @@ class NfcReader:
         try:
             self.mifare = nxppy.Mifare()
         except SystemError:
-            from . import mock_nxppy
+            import mock_nxppy
 
             self.mifare = mock_nxppy.Mifare()
 
