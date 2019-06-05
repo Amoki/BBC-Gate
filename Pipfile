@@ -6,9 +6,9 @@ name = "pypi"
 [packages]
 django = "*"
 docutils = "*"
-"rpi.gpio" = "*"
 requests = "*"
 nxppy = "*"
+gpiozero = "*"
 
 [dev-packages]
 

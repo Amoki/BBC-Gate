@@ -1,23 +1,17 @@
 import time
 from threading import Thread
 
-try:
-    import RPi.GPIO as GPIO
-except RuntimeError:
-    import utils.mock_gpio as GPIO
+from gpiozero import LED
 
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(12, GPIO.OUT)
-GPIO.output(12, GPIO.HIGH)  # Set default as low
+door = LED(12, initial_value=False, active_high=False)
 
 
 class OpenDoor(Thread):
     def run(self):
         print("OPENING DOOR")
-        GPIO.output(12, GPIO.LOW)
+        door.on()
         time.sleep(2)
-        GPIO.output(12, GPIO.HIGH)
+        door.off()
         print("CLOSING DOOR")
 
 

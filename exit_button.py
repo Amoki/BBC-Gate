@@ -1,23 +1,18 @@
 import time
 from utils import door
 
-try:
-    import RPi.GPIO as GPIO
-except RuntimeError:
-    import utils.mock_gpio as GPIO
+from gpiozero import Button, SmoothedInputDevice
+from signal import pause
 
-BUTTON = 26
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+# button = SmoothedInputDevice(26, pull_up=False, threshold=0.8, sample_wait=0.05, partial=True)
+button = Button(26, bounce_time=0.5)
 
 
-def open_door(channel):
+def open_door():
     print("Opening door from exit button")
     door.open()
 
 
 if __name__ == "__main__":
-    print(f"Listening button {BUTTON}")
-    GPIO.add_event_detect(BUTTON, GPIO.FALLING, callback=open_door, bouncetime=500)
-    while True:
-        time.sleep(60)
+    button.when_pressed = open_door
+    pause()
