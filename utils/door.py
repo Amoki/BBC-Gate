@@ -1,6 +1,6 @@
 import time
 from threading import Thread
-
+import gpio
 from gpiozero import LED
 
 door = LED(12, initial_value=False, active_high=False)
